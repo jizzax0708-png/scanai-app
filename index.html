@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Global Halal AI Scanner PRO</title>
+
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/@ericblade/quagga2/dist/quagga.min.js"></script>
+</head>
+
+<body>
+
+<div class="bg-overlay"></div>
+
+<div class="app">
+
+<h1>🌍 Halal AI Scanner PRO</h1>
+
+<!-- 🌍 COUNTRY SELECT (RESTORED) -->
+<div class="topbar">
+🌍 Country:
+<select id="country">
+  <option value="uz">🇺🇿 Uzbekistan</option>
+  <option value="sa">🇸🇦 Saudi Arabia</option>
+  <option value="ae">🇦🇪 UAE</option>
+  <option value="tr">🇹🇷 Turkey</option>
+  <option value="us">🇺🇸 USA</option>
+  <option value="uk">🇬🇧 UK</option>
+  <option value="ru">🇷🇺 Russia</option>
+  <option value="cn">🇨🇳 China</option>
+  <option value="fr">🇫🇷 France</option>
+  <option value="de">🇩🇪 Germany</option>
+</select>
+</div>
+
+<!-- BUTTONS -->
+<button onclick="startScanner()">📷 Scan</button>
+<button onclick="manualMode()">⌨️ Manual</button>
+
+<!-- MANUAL -->
+<div id="manualBox" class="hidden">
+<input id="codeInput" placeholder="Enter barcode">
+<button onclick="manualSearch()">Search</button>
+</div>
+
+<!-- SCANNER -->
+<div id="scannerBox"></div>
+
+<!-- RESULT -->
+<div id="result">📡 Ready to scan...</div>
+
+<!-- CERTIFICATE -->
+<div id="certificateBox" class="hidden">
+<h2>🏆 HALAL CERTIFICATE</h2>
+
+<img src="https://images.unsplash.com/photo-1581090700227-4c2c9c2a7a2f" width="200">
+
+<p id="certText"></p>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
