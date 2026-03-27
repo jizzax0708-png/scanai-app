@@ -1,43 +1,65 @@
-const countries = [
-  { name: "Uzbekistan", flag: "🇺🇿" },
-  { name: "Turkey", flag: "🇹🇷" },
-  { name: "Saudi Arabia", flag: "🇸🇦" },
-  { name: "USA", flag: "🇺🇸" },
-  { name: "UK", flag: "🇬🇧" },
-  { name: "Russia", flag: "🇷🇺" },
-  { name: "China", flag: "🇨🇳" }
-];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Global Halal AI Scanner PRO</title>
 
-function scanFake() {
-  document.getElementById("result").innerText =
-    "📷 Scanner active... scanning product";
-}
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/@ericblade/quagga2/dist/quagga.min.js"></script>
+</head>
 
-function checkFood() {
-  let code = document.getElementById("codeInput").value;
-  let country = countries[Math.floor(Math.random() * countries.length)];
+<body>
 
-  if (!code) {
-    document.getElementById("result").innerHTML =
-      "⚠️ Please enter QR or barcode!";
-    return;
-  }
+<div class="bg-overlay"></div>
 
-  let r = Math.random();
+<div class="app">
 
-  let status = "";
+<h1>🌍 Halal AI Scanner PRO</h1>
 
-  if (r < 0.4) {
-    status = "🟢 HALAL";
-  } else if (r < 0.7) {
-    status = "🟠 SHUBHALI";
-  } else {
-    status = "🔴 HARAM";
-  }
+<!-- 🌍 COUNTRY SELECT (RESTORED) -->
+<div class="topbar">
+🌍 Country:
+<select id="country">
+  <option value="uz">🇺🇿 Uzbekistan</option>
+  <option value="sa">🇸🇦 Saudi Arabia</option>
+  <option value="ae">🇦🇪 UAE</option>
+  <option value="tr">🇹🇷 Turkey</option>
+  <option value="us">🇺🇸 USA</option>
+  <option value="uk">🇬🇧 UK</option>
+  <option value="ru">🇷🇺 Russia</option>
+  <option value="cn">🇨🇳 China</option>
+  <option value="fr">🇫🇷 France</option>
+  <option value="de">🇩🇪 Germany</option>
+</select>
+</div>
 
-  document.getElementById("result").innerHTML = `
-    🌍 Country: ${country.flag} ${country.name}<br><br>
-    📦 Product Code: ${code}<br><br>
-    ⚡ Result: ${status}
-  `;
-}
+<!-- BUTTONS -->
+<button onclick="startScanner()">📷 Scan</button>
+<button onclick="manualMode()">⌨️ Manual</button>
+
+<!-- MANUAL -->
+<div id="manualBox" class="hidden">
+<input id="codeInput" placeholder="Enter barcode">
+<button onclick="manualSearch()">Search</button>
+</div>
+
+<!-- SCANNER -->
+<div id="scannerBox"></div>
+
+<!-- RESULT -->
+<div id="result">📡 Ready to scan...</div>
+
+<!-- CERTIFICATE -->
+<div id="certificateBox" class="hidden">
+<h2>🏆 HALAL CERTIFICATE</h2>
+
+<img src="https://images.unsplash.com/photo-1581090700227-4c2c9c2a7a2f" width="200">
+
+<p id="certText"></p>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
